@@ -249,6 +249,23 @@ body {
     color: var(--text-color);
 }
 
+.publication-status {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-style: normal;
+    vertical-align: middle;
+}
+
+.status-under-review {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fbbf24;
+}
+
 .publication-buttons {
     display: flex;
     gap: 12px;
