@@ -93,7 +93,6 @@ body {
 
 .email a:hover {
     color: var(--text-color);
-    text-decoration: underline;
 }
 
 .email-icon {
@@ -132,7 +131,7 @@ body {
 
 .about-content strong {
     color: var(--text-color);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .about-content a {
@@ -143,7 +142,6 @@ body {
 
 .about-content a:hover {
     color: var(--link-hover);
-    text-decoration: underline;
 }
 
 /* News Styles */
@@ -179,7 +177,7 @@ body {
 
 .news-content strong {
     color: var(--text-color);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 /* Publications Styles */
@@ -190,6 +188,8 @@ body {
 }
 
 .publication-item {
+    display: flex;
+    gap: 24px;
     padding: 24px;
     background-color: var(--bg-light);
     border-left: 4px solid var(--primary-color);
@@ -200,6 +200,28 @@ body {
 .publication-item:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
+}
+
+.publication-image {
+    flex-shrink: 0;
+    width: 300px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: var(--border-color);
+}
+
+.publication-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.publication-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .publication-title {
@@ -219,12 +241,62 @@ body {
 .publication-venue {
     color: var(--text-secondary);
     font-style: italic;
-    margin: 0;
+    margin: 0 0 16px 0;
 }
 
 .publication-venue em {
     font-style: italic;
     color: var(--text-color);
+}
+
+.publication-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+    flex-wrap: wrap;
+}
+
+.pub-button {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.paper-button {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.paper-button:hover {
+    background-color: var(--link-hover);
+    transform: translateY(-1px);
+}
+
+.code-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.code-button:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.video-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.video-button:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
 }
 
 /* Footer Styles */
@@ -245,7 +317,6 @@ body {
 
 .footer a:hover {
     color: var(--link-hover);
-    text-decoration: underline;
 }
 
 /* Responsive Design */
@@ -283,10 +354,20 @@ body {
 
     .publication-item {
         padding: 20px;
+        flex-direction: column;
+    }
+
+    .publication-image {
+        width: 100%;
+        max-width: 100%;
     }
 
     .publication-title {
         font-size: 1.1rem;
+    }
+
+    .publication-buttons {
+        margin-top: 16px;
     }
 
     .about-content p {
