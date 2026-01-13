@@ -83,14 +83,22 @@ body {
 }
 
 .email a {
-    color: var(--link-color);
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .email a:hover {
-    color: var(--link-hover);
+    color: var(--text-color);
     text-decoration: underline;
+}
+
+.email-icon {
+    flex-shrink: 0;
+    opacity: 0.8;
 }
 
 /* Section Styles */
@@ -125,6 +133,17 @@ body {
 .about-content strong {
     color: var(--text-color);
     font-weight: 600;
+}
+
+.about-content a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.about-content a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
 }
 
 /* News Styles */
