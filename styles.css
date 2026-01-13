@@ -264,39 +264,45 @@ body {
     font-size: 0.9rem;
     font-weight: 500;
     transition: all 0.2s ease;
-    border: 1px solid transparent;
+    border: 1px solid #9ca3af;
+    background-color: #f3f4f6;
+    color: #6b7280;
 }
 
 .paper-button {
-    background-color: var(--primary-color);
-    color: #ffffff;
+    background-color: #f3f4f6;
+    color: #6b7280;
+    border-color: #9ca3af;
 }
 
 .paper-button:hover {
-    background-color: var(--link-hover);
-    transform: translateY(-1px);
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
 }
 
 .code-button {
-    background-color: transparent;
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: #f3f4f6;
+    color: #6b7280;
+    border-color: #9ca3af;
 }
 
 .code-button:hover {
     background-color: var(--primary-color);
     color: #ffffff;
+    border-color: var(--primary-color);
 }
 
 .video-button {
-    background-color: transparent;
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: #f3f4f6;
+    color: #6b7280;
+    border-color: #9ca3af;
 }
 
 .video-button:hover {
     background-color: var(--primary-color);
     color: #ffffff;
+    border-color: var(--primary-color);
 }
 
 /* Footer Styles */
