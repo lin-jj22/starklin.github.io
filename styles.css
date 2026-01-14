@@ -415,9 +415,9 @@ body {
 
 /* Ice Hockey Easter Egg */
 .hockey-easter-egg {
-    margin-top: 40px;
+    position: relative;
+    margin-bottom: 20px;
     padding: 20px 0;
-    border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -453,13 +453,37 @@ body {
     pointer-events: none;
 }
 
+.goal {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 75px;
+    z-index: 1;
+}
+
+.goal-left {
+    left: 0;
+}
+
+.goal-right {
+    right: 0;
+}
+
+.goal-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
 .hockey-player {
     position: absolute;
-    left: 20px;
+    left: 40px;
     top: 50%;
     transform: translateY(-50%);
     width: 60px;
     height: 60px;
+    z-index: 2;
     animation: skate 3s ease-in-out infinite;
 }
 
@@ -469,9 +493,45 @@ body {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
+.speech-bubble {
+    position: absolute;
+    background: #ffffff;
+    color: #1f2937;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 100;
+    pointer-events: none;
+    max-width: 200px;
+    text-align: center;
+    transform: translateX(-50%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #ffffff;
+}
+
+.speech-bubble.show {
+    opacity: 1;
+    visibility: visible;
+}
+
 .hockey-puck {
     position: absolute;
-    left: 90px;
+    left: 110px;
     top: 50%;
     transform: translateY(-50%);
     width: 12px;
@@ -479,21 +539,22 @@ body {
     background: #1f2937;
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 2;
     animation: slide 3s ease-in-out infinite;
 }
 
 @keyframes skate {
     0%, 100% {
-        transform: translateY(-50%) translateX(0);
+        transform: translateY(-50%) translateX(0) scaleX(1);
     }
     25% {
-        transform: translateY(-50%) translateX(150px) scaleX(1);
+        transform: translateY(-50%) translateX(130px) scaleX(1);
     }
     50% {
-        transform: translateY(-50%) translateX(300px) scaleX(-1);
+        transform: translateY(-50%) translateX(260px) scaleX(-1);
     }
     75% {
-        transform: translateY(-50%) translateX(150px) scaleX(-1);
+        transform: translateY(-50%) translateX(130px) scaleX(-1);
     }
 }
 
@@ -502,19 +563,19 @@ body {
         transform: translateY(-50%) translateX(0);
     }
     25% {
-        transform: translateY(-50%) translateX(150px);
+        transform: translateY(-50%) translateX(130px);
     }
     50% {
-        transform: translateY(-50%) translateX(300px);
+        transform: translateY(-50%) translateX(260px);
     }
     75% {
-        transform: translateY(-50%) translateX(150px);
+        transform: translateY(-50%) translateX(130px);
     }
 }
 
 @media (max-width: 768px) {
     .hockey-easter-egg {
-        margin-top: 30px;
+        margin-bottom: 15px;
         padding: 15px 0;
     }
 
@@ -523,14 +584,51 @@ body {
         max-width: 300px;
     }
 
+    .goal {
+        width: 40px;
+        height: 60px;
+    }
+
     .hockey-player {
         width: 45px;
         height: 45px;
+        left: 30px;
     }
 
     .hockey-puck {
         width: 10px;
         height: 10px;
+        left: 80px;
+    }
+
+    @keyframes skate {
+        0%, 100% {
+            transform: translateY(-50%) translateX(0) scaleX(1);
+        }
+        25% {
+            transform: translateY(-50%) translateX(100px) scaleX(1);
+        }
+        50% {
+            transform: translateY(-50%) translateX(200px) scaleX(-1);
+        }
+        75% {
+            transform: translateY(-50%) translateX(100px) scaleX(-1);
+        }
+    }
+
+    @keyframes slide {
+        0%, 100% {
+            transform: translateY(-50%) translateX(0);
+        }
+        25% {
+            transform: translateY(-50%) translateX(100px);
+        }
+        50% {
+            transform: translateY(-50%) translateX(200px);
+        }
+        75% {
+            transform: translateY(-50%) translateX(100px);
+        }
     }
 }
 

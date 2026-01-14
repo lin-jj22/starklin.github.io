@@ -139,36 +139,135 @@
 
         <!-- Footer -->
         <footer class="footer">
+            <!-- Ice Hockey Easter Egg -->
+            <div class="hockey-easter-egg">
+                <div class="ice-rink">
+                    <!-- Left Goal -->
+                    <div class="goal goal-left">
+                        <svg class="goal-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Goal posts -->
+                            <line x1="0" y1="20" x2="0" y2="80" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="0" y1="20" x2="15" y2="20" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="0" y1="80" x2="15" y2="80" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="15" y1="20" x2="15" y2="80" stroke="#1f2937" stroke-width="2" stroke-dasharray="2,2"/>
+                        </svg>
+                    </div>
+                    <!-- Right Goal -->
+                    <div class="goal goal-right">
+                        <svg class="goal-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Goal posts -->
+                            <line x1="100" y1="20" x2="100" y2="80" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="100" y1="20" x2="85" y2="20" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="100" y1="80" x2="85" y2="80" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="85" y1="20" x2="85" y2="80" stroke="#1f2937" stroke-width="2" stroke-dasharray="2,2"/>
+                        </svg>
+                    </div>
+                    <div class="hockey-player">
+                        <svg class="player-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Head -->
+                            <circle cx="50" cy="25" r="8" fill="#fdbcb4"/>
+                            <!-- Body -->
+                            <rect x="45" y="33" width="10" height="20" fill="#2563eb"/>
+                            <!-- Arms -->
+                            <line x1="40" y1="38" x2="30" y2="45" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="60" y1="38" x2="70" y2="45" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+                            <!-- Legs (skating position) -->
+                            <line x1="48" y1="53" x2="45" y2="65" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="52" y1="53" x2="55" y2="65" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+                            <!-- Skates -->
+                            <ellipse cx="45" cy="68" rx="4" ry="2" fill="#1f2937"/>
+                            <ellipse cx="55" cy="68" rx="4" ry="2" fill="#1f2937"/>
+                            <!-- Stick -->
+                            <line x1="30" y1="45" x2="20" y2="70" stroke="#8b4513" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="20" y1="70" x2="15" y2="75" stroke="#8b4513" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="hockey-puck"></div>
+                </div>
+                <div class="speech-bubble" id="speechBubble"></div>
+            </div>
             <p>Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a></p>
         </footer>
-
-        <!-- Ice Hockey Easter Egg -->
-        <div class="hockey-easter-egg">
-            <div class="ice-rink">
-                <div class="hockey-player">
-                    <svg class="player-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Head -->
-                        <circle cx="50" cy="25" r="8" fill="#fdbcb4"/>
-                        <!-- Body -->
-                        <rect x="45" y="33" width="10" height="20" fill="#2563eb"/>
-                        <!-- Arms -->
-                        <line x1="40" y1="38" x2="30" y2="45" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-                        <line x1="60" y1="38" x2="70" y2="45" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-                        <!-- Legs (skating position) -->
-                        <line x1="48" y1="53" x2="45" y2="65" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
-                        <line x1="52" y1="53" x2="55" y2="65" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
-                        <!-- Skates -->
-                        <ellipse cx="45" cy="68" rx="4" ry="2" fill="#1f2937"/>
-                        <ellipse cx="55" cy="68" rx="4" ry="2" fill="#1f2937"/>
-                        <!-- Stick -->
-                        <line x1="30" y1="45" x2="20" y2="70" stroke="#8b4513" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="20" y1="70" x2="15" y2="75" stroke="#8b4513" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <div class="hockey-puck"></div>
-            </div>
-        </div>
     </div>
+    <script>
+        // Speech bubble messages
+        const messages = [
+            "Welcome to Junjian's website!",
+            "Let's play hockey together!",
+            "I'll teach you hockey!",
+            "Haha, so happy!",
+            "Come join me on the ice!",
+            "Hockey is awesome!",
+            "Let's score a goal!",
+            "Ice hockey rocks!"
+        ];
+
+        const speechBubble = document.getElementById('speechBubble');
+        const hockeyPlayer = document.querySelector('.hockey-player');
+        const iceRink = document.querySelector('.ice-rink');
+        const hockeyEasterEgg = document.querySelector('.hockey-easter-egg');
+        let isShowing = false;
+        let animationFrameId = null;
+
+        function updateBubblePosition() {
+            if (!hockeyPlayer || !speechBubble || !iceRink || !hockeyEasterEgg) return;
+            
+            const rinkRect = iceRink.getBoundingClientRect();
+            const playerRect = hockeyPlayer.getBoundingClientRect();
+            const easterEggRect = hockeyEasterEgg.getBoundingClientRect();
+            
+            // Calculate player's center position relative to easter egg container
+            const playerCenterX = playerRect.left + playerRect.width / 2 - easterEggRect.left;
+            const playerTop = playerRect.top - easterEggRect.top;
+            
+            // Position bubble above the player
+            speechBubble.style.left = playerCenterX + 'px';
+            speechBubble.style.top = (playerTop - 50) + 'px';
+        }
+
+        function showRandomMessage() {
+            if (isShowing) return;
+            
+            isShowing = true;
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            speechBubble.textContent = randomMessage;
+            speechBubble.classList.add('show');
+            updateBubblePosition();
+            
+            // Continuously update position during animation
+            function animate() {
+                if (isShowing) {
+                    updateBubblePosition();
+                    animationFrameId = requestAnimationFrame(animate);
+                }
+            }
+            animate();
+            
+            // Hide after 2-3 seconds
+            const hideDelay = 2000 + Math.random() * 1000;
+            setTimeout(() => {
+                speechBubble.classList.remove('show');
+                isShowing = false;
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                }
+            }, hideDelay);
+        }
+
+        // Show message randomly every 4-8 seconds
+        function scheduleNextMessage() {
+            const delay = 4000 + Math.random() * 4000;
+            setTimeout(() => {
+                showRandomMessage();
+                scheduleNextMessage();
+            }, delay);
+        }
+
+        // Start showing messages after initial delay
+        setTimeout(() => {
+            scheduleNextMessage();
+        }, 2000);
+    </script>
 </body>
 </html>
 
